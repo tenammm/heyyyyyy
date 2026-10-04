@@ -10,6 +10,7 @@
 
 <title>hey, you.</title>
 
+
 <link rel="preconnect"
       href="https://fonts.googleapis.com">
 
@@ -23,9 +24,9 @@
 
 <style>
 
-/* =========================================
+/* =====================================================
    RESET
-========================================= */
+===================================================== */
 
 *{
     box-sizing:border-box;
@@ -34,9 +35,9 @@
 }
 
 
-/* =========================================
-   PAGE
-========================================= */
+/* =====================================================
+   BODY
+===================================================== */
 
 html,
 body{
@@ -50,32 +51,29 @@ body{
 
     background:#d8d2c7;
 
-    display:flex;
-
-    justify-content:center;
-    align-items:center;
-
-    padding:10px;
-
-    overflow-x:hidden;
-
     color:#38332f;
 
     font-family:"DM Sans",sans-serif;
+
+    overflow-x:hidden;
 }
 
 
-/* =========================================
+/* =====================================================
    PAPER
-========================================= */
+===================================================== */
 
 .paper{
 
     position:relative;
 
-    width:min(650px,100%);
+    width:650px;
+
+    max-width:calc(100vw - 20px);
 
     min-height:calc(100vh - 20px);
+
+    margin:10px auto;
 
     background:#f7f1e4;
 
@@ -89,7 +87,7 @@ body{
 }
 
 
-/* notebook lines */
+/* Notebook lines */
 
 .paper::before{
 
@@ -111,7 +109,7 @@ body{
 }
 
 
-/* red notebook margin */
+/* Red margin */
 
 .paper::after{
 
@@ -132,9 +130,9 @@ body{
 }
 
 
-/* =========================================
-   TAPE
-========================================= */
+/* =====================================================
+   DECORATION
+===================================================== */
 
 .tape{
 
@@ -162,35 +160,33 @@ body{
 }
 
 
-/* =========================================
-   CORNER WRITING
-========================================= */
-
 .corner{
 
     position:absolute;
 
     font-family:"Patrick Hand",cursive;
 
-    font-size:15px;
-
     color:#8b8175;
 
-    z-index:3;
+    font-size:15px;
+
+    white-space:nowrap;
 
     pointer-events:none;
 
-    white-space:nowrap;
+    z-index:3;
 }
+
 
 .corner.one{
 
-    top:23px;
+    top:24px;
 
     right:22px;
 
     transform:rotate(4deg);
 }
+
 
 .corner.two{
 
@@ -202,23 +198,63 @@ body{
 }
 
 
-/* =========================================
+.doodle{
+
+    position:absolute;
+
+    font-family:"Patrick Hand",cursive;
+
+    color:#9b9084;
+
+    pointer-events:none;
+
+    user-select:none;
+
+    z-index:2;
+}
+
+
+.star{
+
+    top:125px;
+
+    right:42px;
+
+    font-size:25px;
+
+    transform:rotate(12deg);
+}
+
+
+.arrow{
+
+    bottom:80px;
+
+    right:40px;
+
+    font-size:27px;
+
+    transform:rotate(-8deg);
+}
+
+
+/* =====================================================
    CONTENT
-========================================= */
+===================================================== */
 
 .content{
 
     position:relative;
 
-    z-index:4;
+    z-index:10;
 
     width:100%;
 }
 
 
-/* =========================================
+/* =====================================================
    SCREENS
-========================================= */
+===================================================== */
 
 .screen{
 
@@ -231,12 +267,13 @@ body{
     justify-content:center;
 }
 
+
 .screen.active{
 
     display:flex;
 
     animation:
-        appear .45s ease;
+        appear .4s ease;
 }
 
 
@@ -260,9 +297,9 @@ body{
 }
 
 
-/* =========================================
+/* =====================================================
    TEXT
-========================================= */
+===================================================== */
 
 .small{
 
@@ -282,8 +319,7 @@ h1{
 
     font-family:"Patrick Hand",cursive;
 
-    font-size:
-        clamp(44px,8vw,64px);
+    font-size:60px;
 
     line-height:1;
 
@@ -297,8 +333,7 @@ h2{
 
     font-family:"Patrick Hand",cursive;
 
-    font-size:
-        clamp(35px,7vw,50px);
+    font-size:48px;
 
     line-height:1.05;
 
@@ -330,9 +365,9 @@ p{
 }
 
 
-/* =========================================
+/* =====================================================
    BUTTONS
-========================================= */
+===================================================== */
 
 .button-row{
 
@@ -342,7 +377,7 @@ p{
 
     margin-top:25px;
 
-    flex-wrap:wrap;
+    width:100%;
 }
 
 
@@ -354,9 +389,9 @@ button{
 
     color:#413a34;
 
-    padding:12px 20px;
+    padding:13px 20px;
 
-    border-radius:5px;
+    border-radius:6px;
 
     font-family:"DM Sans",sans-serif;
 
@@ -385,64 +420,19 @@ button:hover{
 
 button:active{
 
-    transform:
-        translateY(0);
+    transform:translateY(0);
 }
 
 
-/* =========================================
-   DOODLES
-========================================= */
-
-.doodle{
-
-    position:absolute;
-
-    font-family:"Patrick Hand",cursive;
-
-    color:#9b9084;
-
-    user-select:none;
-
-    pointer-events:none;
-
-    z-index:2;
-}
-
-
-.star{
-
-    top:120px;
-
-    right:42px;
-
-    font-size:25px;
-
-    transform:rotate(12deg);
-}
-
-
-.arrow{
-
-    bottom:90px;
-
-    right:40px;
-
-    font-size:27px;
-
-    transform:rotate(-8deg);
-}
-
-
-/* =========================================
+/* =====================================================
    LITTLE NOTE
-========================================= */
+===================================================== */
 
 .note-card{
 
-    width:230px;
+    position:relative;
 
-    max-width:90%;
+    width:230px;
 
     background:#eee3d0;
 
@@ -455,14 +445,12 @@ button:active{
         10px
         0
         28px
-        8px;
+        5px;
 
     box-shadow:
         3px 5px 10px rgba(0,0,0,.08);
 
     transform:rotate(-3deg);
-
-    position:relative;
 }
 
 
@@ -509,15 +497,15 @@ button:active{
 
     font-size:17px;
 
-    color:#8c8175;
-
     line-height:1.3;
+
+    color:#8c8175;
 }
 
 
-/* =========================================
+/* =====================================================
    QUESTIONS
-========================================= */
+===================================================== */
 
 .question-number{
 
@@ -559,9 +547,9 @@ button:active{
 
 .option{
 
-    text-align:left;
-
     width:100%;
+
+    text-align:left;
 
     background:
         rgba(255,255,255,.35);
@@ -582,9 +570,9 @@ button:active{
 }
 
 
-/* =========================================
+/* =====================================================
    ENDING
-========================================= */
+===================================================== */
 
 .ending-heart{
 
@@ -610,39 +598,33 @@ button:active{
 }
 
 
-/* =========================================
-   FOOTER
-========================================= */
-
 .footer{
 
     margin-top:35px;
 
     font-family:"Patrick Hand",cursive;
 
-    color:#a0978d;
-
     font-size:15px;
+
+    color:#a0978d;
 }
 
 
-/* =========================================
+/* =====================================================
    MOBILE
-========================================= */
+===================================================== */
 
-@media(max-width:600px){
+@media(max-width:900px){
 
     body{
-
-        display:block;
 
         width:100%;
 
         min-height:100vh;
 
-        padding:6px;
+        background:#f7f1e4;
 
-        overflow-x:hidden;
+        padding:0;
     }
 
 
@@ -650,15 +632,18 @@ button:active{
 
         width:100%;
 
-        min-height:
-            calc(100vh - 12px);
+        max-width:none;
+
+        min-height:100vh;
+
+        margin:0;
 
         padding:
             58px
-            30px
-            40px;
+            28px
+            45px;
 
-        overflow:hidden;
+        box-shadow:none;
     }
 
 
@@ -682,7 +667,7 @@ button:active{
 
         top:20px;
 
-        right:12px;
+        right:14px;
 
         font-size:13px;
     }
@@ -692,15 +677,15 @@ button:active{
 
         bottom:12px;
 
-        left:13px;
+        left:14px;
 
         font-size:13px;
     }
 
 
-    .doodle.star{
+    .star{
 
-        top:125px;
+        top:115px;
 
         right:18px;
 
@@ -708,29 +693,25 @@ button:active{
     }
 
 
-    .doodle.arrow{
+    .arrow{
 
         bottom:70px;
 
         right:18px;
 
-        font-size:23px;
+        font-size:22px;
     }
 
 
     h1{
 
         font-size:48px;
-
-        max-width:100%;
     }
 
 
     h2{
 
         font-size:38px;
-
-        max-width:100%;
     }
 
 
@@ -739,8 +720,6 @@ button:active{
         font-size:15px;
 
         line-height:1.65;
-
-        max-width:100%;
     }
 
 
@@ -752,9 +731,9 @@ button:active{
 
     .button-row{
 
-        width:100%;
-
         flex-direction:column;
+
+        width:100%;
     }
 
 
@@ -774,17 +753,45 @@ button:active{
 
         font-size:14px;
 
-        padding:
-            14px
-            15px;
+        line-height:1.4;
+
+        padding:14px 15px;
     }
 
 
     .note-card{
 
         width:210px;
+    }
 
-        margin-left:4px;
+}
+
+
+@media(max-width:380px){
+
+    .paper{
+
+        padding-left:23px;
+
+        padding-right:23px;
+    }
+
+
+    h1{
+
+        font-size:44px;
+    }
+
+
+    h2{
+
+        font-size:34px;
+    }
+
+
+    .question{
+
+        font-size:27px;
     }
 
 }
@@ -800,27 +807,23 @@ button:active{
 <div class="paper">
 
 
-    <!-- TAPE -->
-
     <div class="tape"></div>
 
-
-    <!-- LITTLE NOTES -->
 
     <div class="corner one">
         don't overthink this.
     </div>
+
 
     <div class="corner two">
         made with questionable courage ♡
     </div>
 
 
-    <!-- DOODLES -->
-
     <div class="doodle star">
         ✦
     </div>
+
 
     <div class="doodle arrow">
         ↗
@@ -830,16 +833,18 @@ button:active{
     <div class="content">
 
 
-        <!-- =================================
+        <!-- =====================================
              SCREEN 1
-        ================================== -->
+        ====================================== -->
 
         <section
             class="screen active"
             id="screen1"
         >
 
-      
+            <div class="small">
+            
+            </div>
 
 
             <h1>
@@ -860,7 +865,8 @@ button:active{
             <div class="button-row">
 
                 <button
-                    onclick="nextScreen(2)"
+                    type="button"
+                    id="continueButton"
                 >
                     okay... continue →
                 </button>
@@ -871,9 +877,9 @@ button:active{
 
 
 
-        <!-- =================================
+        <!-- =====================================
              SCREEN 2
-        ================================== -->
+        ====================================== -->
 
         <section
             class="screen"
@@ -908,6 +914,7 @@ button:active{
                     for no reason :)
                 </div>
 
+
                 <div class="tiny">
                     okay maybe there is<br>
                     a reason.
@@ -919,7 +926,8 @@ button:active{
             <div class="button-row">
 
                 <button
-                    onclick="nextScreen(3)"
+                    type="button"
+                    data-next="3"
                 >
                     keep going →
                 </button>
@@ -930,9 +938,9 @@ button:active{
 
 
 
-        <!-- =================================
+        <!-- =====================================
              SCREEN 3
-        ================================== -->
+        ====================================== -->
 
         <section
             class="screen"
@@ -961,7 +969,8 @@ button:active{
             <div class="button-row">
 
                 <button
-                    onclick="nextScreen(4)"
+                    type="button"
+                    data-next="4"
                 >
                     there's more? →
                 </button>
@@ -972,9 +981,9 @@ button:active{
 
 
 
-        <!-- =================================
+        <!-- =====================================
              SCREEN 4
-        ================================== -->
+        ====================================== -->
 
         <section
             class="screen"
@@ -1024,7 +1033,8 @@ button:active{
             <div class="button-row">
 
                 <button
-                    onclick="nextScreen(5)"
+                    type="button"
+                    data-next="5"
                 >
                     okay... ask me →
                 </button>
@@ -1035,9 +1045,9 @@ button:active{
 
 
 
-        <!-- =================================
+        <!-- =====================================
              QUESTION 1
-        ================================== -->
+        ====================================== -->
 
         <section
             class="screen"
@@ -1059,32 +1069,36 @@ button:active{
             <div class="options">
 
                 <button
+                    type="button"
                     class="option"
-                    onclick="nextScreen(6)"
+                    data-next="6"
                 >
                     obviously me. I have standards.
                 </button>
 
 
                 <button
+                    type="button"
                     class="option"
-                    onclick="nextScreen(6)"
+                    data-next="6"
                 >
                     you. I'm generous like that.
                 </button>
 
 
                 <button
+                    type="button"
                     class="option"
-                    onclick="nextScreen(6)"
+                    data-next="6"
                 >
                     we fight for it every night.
                 </button>
 
 
                 <button
+                    type="button"
                     class="option"
-                    onclick="nextScreen(6)"
+                    data-next="6"
                 >
                     we sleep on the floor.
                     problem solved.
@@ -1096,9 +1110,9 @@ button:active{
 
 
 
-        <!-- =================================
+        <!-- =====================================
              QUESTION 2
-        ================================== -->
+        ====================================== -->
 
         <section
             class="screen"
@@ -1119,32 +1133,36 @@ button:active{
             <div class="options">
 
                 <button
+                    type="button"
                     class="option"
-                    onclick="nextScreen(7)"
+                    data-next="7"
                 >
                     I give it to you ♡
                 </button>
 
 
                 <button
+                    type="button"
                     class="option"
-                    onclick="nextScreen(7)"
+                    data-next="7"
                 >
                     I eat it before you notice.
                 </button>
 
 
                 <button
+                    type="button"
                     class="option"
-                    onclick="nextScreen(7)"
+                    data-next="7"
                 >
                     we split it like civilized people.
                 </button>
 
 
                 <button
+                    type="button"
                     class="option"
-                    onclick="nextScreen(7)"
+                    data-next="7"
                 >
                     whoever grabs it first wins.
                 </button>
@@ -1155,9 +1173,9 @@ button:active{
 
 
 
-        <!-- =================================
+        <!-- =====================================
              QUESTION 3
-        ================================== -->
+        ====================================== -->
 
         <section
             class="screen"
@@ -1178,32 +1196,36 @@ button:active{
             <div class="options">
 
                 <button
+                    type="button"
                     class="option"
-                    onclick="nextScreen(8)"
+                    data-next="8"
                 >
                     🐱 tiny cat
                 </button>
 
 
                 <button
+                    type="button"
                     class="option"
-                    onclick="nextScreen(8)"
+                    data-next="8"
                 >
                     🐉 pocket dragon
                 </button>
 
 
                 <button
+                    type="button"
                     class="option"
-                    onclick="nextScreen(8)"
+                    data-next="8"
                 >
                     🐧 emotionally supportive penguin
                 </button>
 
 
                 <button
+                    type="button"
                     class="option"
-                    onclick="nextScreen(8)"
+                    data-next="8"
                 >
                     🦫 ridiculously powerful capybara
                 </button>
@@ -1214,9 +1236,9 @@ button:active{
 
 
 
-        <!-- =================================
+        <!-- =====================================
              FINAL QUESTION
-        ================================== -->
+        ====================================== -->
 
         <section
             class="screen"
@@ -1238,32 +1260,36 @@ button:active{
 
 
                 <button
-                    class="option"
-                    onclick="sendChoice('I like you too ❤️')"
+                    type="button"
+                    class="option final-answer"
+                    data-answer="I like you too ❤️"
                 >
                     I like you too ❤️
                 </button>
 
 
                 <button
-                    class="option"
-                    onclick="sendChoice('I like you, but I need some time ❤️')"
+                    type="button"
+                    class="option final-answer"
+                    data-answer="I like you, but I need some time ❤️"
                 >
                     I like you, but I need some time ❤️
                 </button>
 
 
                 <button
-                    class="option"
-                    onclick="sendChoice('I am not sure yet')"
+                    type="button"
+                    class="option final-answer"
+                    data-answer="I am not sure yet"
                 >
                     I'm not sure yet
                 </button>
 
 
                 <button
-                    class="option"
-                    onclick="sendChoice('I do not feel the same way')"
+                    type="button"
+                    class="option final-answer"
+                    data-answer="I do not feel the same way"
                 >
                     I don't feel the same way
                 </button>
@@ -1275,9 +1301,9 @@ button:active{
 
 
 
-        <!-- =================================
+        <!-- =====================================
              ENDING
-        ================================== -->
+        ====================================== -->
 
         <section
             class="screen"
@@ -1302,24 +1328,4 @@ button:active{
             <p>
                 Whatever your answer was,
                 I'm genuinely glad you took the
-                time to go through all of this.
-            </p>
-
-
-            <p>
-                I meant everything I said.
-                I just wanted to be honest about
-                liking you without making things
-                complicated or putting any pressure
-                on you.
-            </p>
-
-
-            <p class="hand">
-                Whatever happens from here,
-                I'm glad I got to tell you. ♡
-            </p>
-
-
-            <p class="ending-note">
-                And hey... I'm sti
+                
