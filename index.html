@@ -1,16 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
 
 <title>hey, you.</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Patrick+Hand&display=swap" rel="stylesheet">
+<link rel="preconnect"
+      href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Patrick+Hand&display=swap"
+      rel="stylesheet">
+
 
 <style>
+
+/* =========================================
+   RESET
+========================================= */
 
 *{
     box-sizing:border-box;
@@ -18,36 +33,70 @@
     padding:0;
 }
 
+
+/* =========================================
+   PAGE
+========================================= */
+
+html,
 body{
+    width:100%;
+    min-height:100%;
+}
+
+body{
+
     min-height:100vh;
+
     background:#d8d2c7;
+
     display:flex;
+
     justify-content:center;
     align-items:center;
+
     padding:10px;
+
     overflow-x:hidden;
-    overflow-y:auto;
+
     color:#38332f;
+
     font-family:"DM Sans",sans-serif;
 }
 
+
+/* =========================================
+   PAPER
+========================================= */
+
 .paper{
+
     position:relative;
-    width:min(650px,94vw);
+
+    width:min(650px,100%);
+
     min-height:calc(100vh - 20px);
+
     background:#f7f1e4;
 
     box-shadow:
         0 15px 35px rgba(60,50,40,.15),
-        0 3px 8px rgba(60,50,40,.1);
+        0 3px 8px rgba(60,50,40,.10);
 
-    padding:55px 55px 45px;
+    padding:60px 55px 45px;
+
     overflow:hidden;
 }
 
+
+/* notebook lines */
+
 .paper::before{
+
     content:"";
+
     position:absolute;
+
     inset:0;
 
     background:
@@ -61,12 +110,18 @@ body{
     pointer-events:none;
 }
 
+
+/* red notebook margin */
+
 .paper::after{
+
     content:"";
+
     position:absolute;
 
     top:0;
     bottom:0;
+
     left:45px;
 
     width:1px;
@@ -76,86 +131,145 @@ body{
     pointer-events:none;
 }
 
+
+/* =========================================
+   TAPE
+========================================= */
+
 .tape{
+
     position:absolute;
 
     top:14px;
+
     left:50%;
 
-    transform:translateX(-50%) rotate(-2deg);
+    transform:
+        translateX(-50%)
+        rotate(-2deg);
 
     width:115px;
+
     height:27px;
 
-    background:rgba(213,192,146,.72);
+    background:
+        rgba(213,192,146,.72);
 
-    box-shadow:0 2px 3px rgba(0,0,0,.05);
+    box-shadow:
+        0 2px 3px rgba(0,0,0,.05);
 
     z-index:3;
 }
 
+
+/* =========================================
+   CORNER WRITING
+========================================= */
+
 .corner{
+
     position:absolute;
 
     font-family:"Patrick Hand",cursive;
-    font-size:16px;
+
+    font-size:15px;
 
     color:#8b8175;
 
-    z-index:2;
+    z-index:3;
+
+    pointer-events:none;
+
+    white-space:nowrap;
 }
 
 .corner.one{
-    top:24px;
-    right:25px;
 
-    transform:rotate(5deg);
+    top:23px;
+
+    right:22px;
+
+    transform:rotate(4deg);
 }
 
 .corner.two{
-    bottom:20px;
-    left:20px;
 
-    transform:rotate(-7deg);
+    bottom:15px;
+
+    left:18px;
+
+    transform:rotate(-5deg);
 }
+
+
+/* =========================================
+   CONTENT
+========================================= */
 
 .content{
+
     position:relative;
-    z-index:2;
+
+    z-index:4;
+
+    width:100%;
 }
 
+
+/* =========================================
+   SCREENS
+========================================= */
+
 .screen{
+
     display:none;
 
-    min-height:0;
+    width:100%;
 
     flex-direction:column;
+
     justify-content:center;
 }
 
 .screen.active{
+
     display:flex;
-    animation:appear .45s ease;
+
+    animation:
+        appear .45s ease;
 }
+
 
 @keyframes appear{
 
     from{
+
         opacity:0;
-        transform:translateY(8px);
+
+        transform:
+            translateY(8px);
     }
 
     to{
-        opacity:1;
-        transform:translateY(0);
-    }
 
+        opacity:1;
+
+        transform:
+            translateY(0);
+    }
 }
 
+
+/* =========================================
+   TEXT
+========================================= */
+
 .small{
+
     font-size:13px;
 
     letter-spacing:1.5px;
+
     text-transform:uppercase;
 
     color:#8d8276;
@@ -163,39 +277,51 @@ body{
     margin-bottom:13px;
 }
 
+
 h1{
+
     font-family:"Patrick Hand",cursive;
 
-    font-size:clamp(42px,8vw,64px);
+    font-size:
+        clamp(44px,8vw,64px);
 
     line-height:1;
+
     font-weight:400;
 
     margin-bottom:22px;
 }
 
+
 h2{
+
     font-family:"Patrick Hand",cursive;
 
-    font-size:clamp(34px,7vw,50px);
+    font-size:
+        clamp(35px,7vw,50px);
 
     line-height:1.05;
+
     font-weight:400;
 
     margin-bottom:20px;
 }
 
+
 p{
+
     font-size:16px;
 
-    line-height:1.75;
+    line-height:1.7;
 
     max-width:520px;
 
     margin-bottom:15px;
 }
 
+
 .hand{
+
     font-family:"Patrick Hand",cursive;
 
     font-size:23px;
@@ -203,7 +329,13 @@ p{
     line-height:1.4;
 }
 
+
+/* =========================================
+   BUTTONS
+========================================= */
+
 .button-row{
+
     display:flex;
 
     gap:12px;
@@ -213,7 +345,9 @@ p{
     flex-wrap:wrap;
 }
 
+
 button{
+
     border:none;
 
     background:#eee3d0;
@@ -230,60 +364,98 @@ button{
 
     cursor:pointer;
 
-    box-shadow:0 2px 0 rgba(60,50,40,.1);
+    box-shadow:
+        0 2px 0 rgba(60,50,40,.10);
 
-    transition:.2s ease;
+    transition:
+        transform .2s ease,
+        background .2s ease;
 }
 
+
 button:hover{
-    transform:translateY(-2px) rotate(-1deg);
+
+    transform:
+        translateY(-2px)
+        rotate(-1deg);
 
     background:#e6d7bd;
 }
 
+
 button:active{
-    transform:translateY(0);
+
+    transform:
+        translateY(0);
 }
 
+
+/* =========================================
+   DOODLES
+========================================= */
+
 .doodle{
+
+    position:absolute;
+
     font-family:"Patrick Hand",cursive;
 
     color:#9b9084;
 
-    position:absolute;
-
     user-select:none;
+
+    pointer-events:none;
+
+    z-index:2;
 }
 
+
 .star{
+
     top:120px;
-    right:45px;
+
+    right:42px;
 
     font-size:25px;
 
     transform:rotate(12deg);
 }
 
-.arrow{
-    bottom:105px;
-    right:45px;
 
-    font-size:28px;
+.arrow{
+
+    bottom:90px;
+
+    right:40px;
+
+    font-size:27px;
 
     transform:rotate(-8deg);
 }
 
 
-/* CUTE NOTE */
+/* =========================================
+   LITTLE NOTE
+========================================= */
 
 .note-card{
+
     width:230px;
+
+    max-width:90%;
 
     background:#eee3d0;
 
-    padding:18px 18px 22px;
+    padding:
+        18px
+        18px
+        22px;
 
-    margin:8px 0 28px 8px;
+    margin:
+        10px
+        0
+        28px
+        8px;
 
     box-shadow:
         3px 5px 10px rgba(0,0,0,.08);
@@ -293,23 +465,32 @@ button:active{
     position:relative;
 }
 
+
 .note-card::before{
+
     content:"";
 
     position:absolute;
 
     top:-8px;
+
     left:50%;
 
-    transform:translateX(-50%) rotate(-2deg);
+    transform:
+        translateX(-50%)
+        rotate(-2deg);
 
     width:65px;
+
     height:18px;
 
-    background:rgba(213,192,146,.72);
+    background:
+        rgba(213,192,146,.72);
 }
 
+
 .note-card .scribble{
+
     font-family:"Patrick Hand",cursive;
 
     font-size:27px;
@@ -321,7 +502,9 @@ button:active{
     margin-bottom:8px;
 }
 
+
 .note-card .tiny{
+
     font-family:"Patrick Hand",cursive;
 
     font-size:17px;
@@ -332,9 +515,12 @@ button:active{
 }
 
 
-/* QUESTIONS */
+/* =========================================
+   QUESTIONS
+========================================= */
 
 .question-number{
+
     font-size:12px;
 
     text-transform:uppercase;
@@ -346,7 +532,9 @@ button:active{
     margin-bottom:8px;
 }
 
+
 .question{
+
     font-family:"Patrick Hand",cursive;
 
     font-size:31px;
@@ -356,36 +544,50 @@ button:active{
     margin-bottom:25px;
 }
 
+
 .options{
+
     display:flex;
 
     flex-direction:column;
 
     gap:11px;
+
+    width:100%;
 }
 
+
 .option{
+
     text-align:left;
 
     width:100%;
 
-    background:rgba(255,255,255,.35);
+    background:
+        rgba(255,255,255,.35);
 
-    border:1px solid rgba(100,90,80,.13);
+    border:
+        1px solid
+        rgba(100,90,80,.13);
 
     box-shadow:none;
 
     padding:14px 16px;
 }
 
+
 .option:hover{
+
     background:#eee2ce;
 }
 
 
-/* ENDING */
+/* =========================================
+   ENDING
+========================================= */
 
 .ending-heart{
+
     font-family:"Patrick Hand",cursive;
 
     font-size:42px;
@@ -395,7 +597,9 @@ button:active{
     margin-bottom:10px;
 }
 
+
 .ending-note{
+
     font-family:"Patrick Hand",cursive;
 
     font-size:20px;
@@ -405,7 +609,13 @@ button:active{
     margin-top:10px;
 }
 
+
+/* =========================================
+   FOOTER
+========================================= */
+
 .footer{
+
     margin-top:35px;
 
     font-family:"Patrick Hand",cursive;
@@ -416,77 +626,186 @@ button:active{
 }
 
 
-/* MOBILE */
+/* =========================================
+   MOBILE
+========================================= */
 
 @media(max-width:600px){
 
     body{
-        align-items:flex-start;
 
-        padding:10px;
+        display:block;
+
+        width:100%;
+
+        min-height:100vh;
+
+        padding:6px;
+
+        overflow-x:hidden;
     }
+
 
     .paper{
-        width:96vw;
 
-        min-height:calc(100vh - 20px);
+        width:100%;
 
-        height:auto;
+        min-height:
+            calc(100vh - 12px);
 
-        padding:55px 35px 45px;
+        padding:
+            58px
+            30px
+            40px;
+
+        overflow:hidden;
     }
+
 
     .paper::after{
-        left:25px;
+
+        left:22px;
     }
+
+
+    .tape{
+
+        top:12px;
+
+        width:95px;
+
+        height:24px;
+    }
+
+
+    .corner.one{
+
+        top:20px;
+
+        right:12px;
+
+        font-size:13px;
+    }
+
+
+    .corner.two{
+
+        bottom:12px;
+
+        left:13px;
+
+        font-size:13px;
+    }
+
+
+    .doodle.star{
+
+        top:125px;
+
+        right:18px;
+
+        font-size:21px;
+    }
+
+
+    .doodle.arrow{
+
+        bottom:70px;
+
+        right:18px;
+
+        font-size:23px;
+    }
+
 
     h1{
+
         font-size:48px;
+
+        max-width:100%;
     }
+
 
     h2{
-        font-size:40px;
+
+        font-size:38px;
+
+        max-width:100%;
     }
+
 
     p{
+
         font-size:15px;
+
+        line-height:1.65;
+
+        max-width:100%;
     }
 
+
+    .hand{
+
+        font-size:21px;
+    }
+
+
     .button-row{
+
+        width:100%;
+
         flex-direction:column;
     }
 
+
     .button-row button{
+
         width:100%;
     }
 
-    .star{
-        right:20px;
+
+    .question{
+
+        font-size:29px;
     }
 
-    .arrow{
-        right:20px;
+
+    .option{
+
+        font-size:14px;
+
+        padding:
+            14px
+            15px;
     }
 
-    .corner.one{
-        right:15px;
-    }
 
     .note-card{
+
         width:210px;
+
+        margin-left:4px;
     }
 
 }
 
 </style>
+
 </head>
 
 
 <body>
 
+
 <div class="paper">
 
+
+    <!-- TAPE -->
+
     <div class="tape"></div>
+
+
+    <!-- LITTLE NOTES -->
 
     <div class="corner one">
         don't overthink this.
@@ -495,6 +814,9 @@ button:active{
     <div class="corner two">
         made with questionable courage ♡
     </div>
+
+
+    <!-- DOODLES -->
 
     <div class="doodle star">
         ✦
@@ -508,31 +830,40 @@ button:active{
     <div class="content">
 
 
-        <!-- =========================
+        <!-- =================================
              SCREEN 1
-        ========================== -->
+        ================================== -->
 
-        <section class="screen active" id="screen1">
+        <section
+            class="screen active"
+            id="screen1"
+        >
 
             <div class="small">
                 a tiny confession
             </div>
 
+
             <h1>
                 hey, you.
             </h1>
+
 
             <p>
                 I could've just sent a message.
             </p>
 
+
             <p class="hand">
                 But where's the fun in that?
             </p>
 
+
             <div class="button-row">
 
-                <button onclick="nextScreen(2)">
+                <button
+                    onclick="nextScreen(2)"
+                >
                     okay... continue →
                 </button>
 
@@ -541,27 +872,36 @@ button:active{
         </section>
 
 
-        <!-- =========================
-             SCREEN 2
-        ========================== -->
 
-        <section class="screen" id="screen2">
+        <!-- =================================
+             SCREEN 2
+        ================================== -->
+
+        <section
+            class="screen"
+            id="screen2"
+        >
 
             <div class="small">
                 so here's the thing
             </div>
 
+
             <h2>
                 I've been smiling at my phone.
             </h2>
+
 
             <p>
                 Which is usually not a good sign.
             </p>
 
+
             <p>
-                ...especially when I know exactly who's on the other end.
+                ...especially when I know exactly
+                who's on the other end.
             </p>
+
 
             <div class="note-card">
 
@@ -577,9 +917,12 @@ button:active{
 
             </div>
 
+
             <div class="button-row">
 
-                <button onclick="nextScreen(3)">
+                <button
+                    onclick="nextScreen(3)"
+                >
                     keep going →
                 </button>
 
@@ -588,30 +931,40 @@ button:active{
         </section>
 
 
-        <!-- =========================
-             SCREEN 3
-        ========================== -->
 
-        <section class="screen" id="screen3">
+        <!-- =================================
+             SCREEN 3
+        ================================== -->
+
+        <section
+            class="screen"
+            id="screen3"
+        >
 
             <div class="small">
                 okay, fine
             </div>
 
+
             <h1>
                 I kinda like you.
             </h1>
 
+
             <p id="typingText"></p>
 
+
             <p>
-                And honestly, I'd like to keep talking to you
-                and see where this goes.
+                And honestly, I'd like to keep
+                talking to you and see where this goes.
             </p>
+
 
             <div class="button-row">
 
-                <button onclick="nextScreen(4)">
+                <button
+                    onclick="nextScreen(4)"
+                >
                     there's more? →
                 </button>
 
@@ -620,45 +973,61 @@ button:active{
         </section>
 
 
-        <!-- =========================
-             SCREEN 4
-        ========================== -->
 
-        <section class="screen" id="screen4">
+        <!-- =================================
+             SCREEN 4
+        ================================== -->
+
+        <section
+            class="screen"
+            id="screen4"
+        >
 
             <div class="small">
                 this is the actual point
             </div>
 
+
             <h2>
-                I just want to know we're on the same page.
+                I just want to know
+                we're on the same page.
             </h2>
 
-            <p>
-                I like talking to you, and I'd genuinely like
-                to know you better.
-            </p>
 
             <p>
-                I'm not trying to rush anything or put some huge
-                label on this. I just don't want to assume you're
-                looking for the same thing when maybe you're not.
+                I like talking to you, and I'd
+                genuinely like to know you better.
             </p>
 
+
             <p>
-                So if you're interested too, I'd love to see where
-                this goes.
+                I'm not trying to rush anything
+                or put some huge label on this.
+                I just don't want to assume you're
+                looking for the same thing when
+                maybe you're not.
             </p>
+
+
+            <p>
+                If you're interested too, I'd really
+                like to see where this goes.
+            </p>
+
 
             <p class="hand">
-                And if you're not looking for that right now,
-                that's completely okay. I'd just rather know than
-                have either of us waste our time guessing. ♡
+                And if you're not looking for that
+                right now, that's completely okay.
+                I'd just rather know than have either
+                of us waste our time guessing. ♡
             </p>
+
 
             <div class="button-row">
 
-                <button onclick="nextScreen(5)">
+                <button
+                    onclick="nextScreen(5)"
+                >
                     okay... ask me →
                 </button>
 
@@ -667,37 +1036,60 @@ button:active{
         </section>
 
 
-        <!-- =========================
-             QUESTION 1
-        ========================== -->
 
-        <section class="screen" id="screen5">
+        <!-- =================================
+             QUESTION 1
+        ================================== -->
+
+        <section
+            class="screen"
+            id="screen5"
+        >
 
             <div class="question-number">
                 question 01 / 04
             </div>
 
+
             <div class="question">
                 Important question:
-                if we lived together, who gets the better side of the bed?
+                if we lived together, who gets
+                the better side of the bed?
             </div>
+
 
             <div class="options">
 
-                <button class="option" onclick="nextScreen(6)">
+                <button
+                    class="option"
+                    onclick="nextScreen(6)"
+                >
                     obviously me. I have standards.
                 </button>
 
-                <button class="option" onclick="nextScreen(6)">
+
+                <button
+                    class="option"
+                    onclick="nextScreen(6)"
+                >
                     you. I'm generous like that.
                 </button>
 
-                <button class="option" onclick="nextScreen(6)">
+
+                <button
+                    class="option"
+                    onclick="nextScreen(6)"
+                >
                     we fight for it every night.
                 </button>
 
-                <button class="option" onclick="nextScreen(6)">
-                    we sleep on the floor. problem solved.
+
+                <button
+                    class="option"
+                    onclick="nextScreen(6)"
+                >
+                    we sleep on the floor.
+                    problem solved.
                 </button>
 
             </div>
@@ -705,36 +1097,57 @@ button:active{
         </section>
 
 
-        <!-- =========================
-             QUESTION 2
-        ========================== -->
 
-        <section class="screen" id="screen6">
+        <!-- =================================
+             QUESTION 2
+        ================================== -->
+
+        <section
+            class="screen"
+            id="screen6"
+        >
 
             <div class="question-number">
                 question 02 / 04
             </div>
+
 
             <div class="question">
                 We have one last french fry.
                 What happens?
             </div>
 
+
             <div class="options">
 
-                <button class="option" onclick="nextScreen(7)">
+                <button
+                    class="option"
+                    onclick="nextScreen(7)"
+                >
                     I give it to you ♡
                 </button>
 
-                <button class="option" onclick="nextScreen(7)">
+
+                <button
+                    class="option"
+                    onclick="nextScreen(7)"
+                >
                     I eat it before you notice.
                 </button>
 
-                <button class="option" onclick="nextScreen(7)">
+
+                <button
+                    class="option"
+                    onclick="nextScreen(7)"
+                >
                     we split it like civilized people.
                 </button>
 
-                <button class="option" onclick="nextScreen(7)">
+
+                <button
+                    class="option"
+                    onclick="nextScreen(7)"
+                >
                     whoever grabs it first wins.
                 </button>
 
@@ -743,36 +1156,57 @@ button:active{
         </section>
 
 
-        <!-- =========================
-             QUESTION 3
-        ========================== -->
 
-        <section class="screen" id="screen7">
+        <!-- =================================
+             QUESTION 3
+        ================================== -->
+
+        <section
+            class="screen"
+            id="screen7"
+        >
 
             <div class="question-number">
                 question 03 / 04
             </div>
+
 
             <div class="question">
                 You get a tiny magical sidekick.
                 Who are you choosing?
             </div>
 
+
             <div class="options">
 
-                <button class="option" onclick="nextScreen(8)">
+                <button
+                    class="option"
+                    onclick="nextScreen(8)"
+                >
                     🐱 tiny cat
                 </button>
 
-                <button class="option" onclick="nextScreen(8)">
+
+                <button
+                    class="option"
+                    onclick="nextScreen(8)"
+                >
                     🐉 pocket dragon
                 </button>
 
-                <button class="option" onclick="nextScreen(8)">
+
+                <button
+                    class="option"
+                    onclick="nextScreen(8)"
+                >
                     🐧 emotionally supportive penguin
                 </button>
 
-                <button class="option" onclick="nextScreen(8)">
+
+                <button
+                    class="option"
+                    onclick="nextScreen(8)"
+                >
                     🦫 ridiculously powerful capybara
                 </button>
 
@@ -781,674 +1215,113 @@ button:active{
         </section>
 
 
-        <!-- =========================
-             FINAL QUESTION
-        ========================== -->
 
-        <section class="screen" id="screen8">
+        <!-- =================================
+             FINAL QUESTION
+        ================================== -->
+
+        <section
+            class="screen"
+            id="screen8"
+        >
 
             <div class="question-number">
                 okay... the actual question
             </div>
 
+
             <div class="question">
-                so... what do you actually feel about me?
+                so... what do you actually
+                feel about me?
             </div>
+
 
             <div class="options">
 
+
                 <button
                     class="option"
-                    onclick="sendChoice('I like you too ❤️')">
-
+                    onclick="sendChoice('I like you too ❤️')"
+                >
                     I like you too ❤️
-
                 </button>
 
 
                 <button
                     class="option"
-                    onclick="sendChoice('I like you, but I need some time ❤️')">
-
+                    onclick="sendChoice('I like you, but I need some time ❤️')"
+                >
                     I like you, but I need some time ❤️
-
                 </button>
 
 
                 <button
                     class="option"
-                    onclick="sendChoice('I am not sure yet')">
-
-                    I am not sure yet
-
+                    onclick="sendChoice('I am not sure yet')"
+                >
+                    I'm not sure yet
                 </button>
 
 
                 <button
                     class="option"
-                    onclick="sendChoice('I do not feel the same way')">
-
-                    I do not feel the same way
-
+                    onclick="sendChoice('I do not feel the same way')"
+                >
+                    I don't feel the same way
                 </button>
+
 
             </div>
 
         </section>
 
 
-        <!-- =========================
-             ENDING PAGE
-        ========================== -->
 
-        <section class="screen" id="screen9">
+        <!-- =================================
+             ENDING
+        ================================== -->
+
+        <section
+            class="screen"
+            id="screen9"
+        >
 
             <div class="ending-heart">
                 ♡
             </div>
 
+
             <div class="small">
                 that's all :)
             </div>
+
 
             <h2>
                 thank you for being honest.
             </h2>
 
-            <p>
-                Whatever your answer was, I'm genuinely glad
-                you took the time to go through all of this.
-            </p>
 
             <p>
-                I meant everything I said. I just wanted to be
-                honest about liking you without making things
-                complicated or putting any pressure on you.
+                Whatever your answer was,
+                I'm genuinely glad you took the
+                time to go through all of this.
             </p>
+
+
+            <p>
+                I meant everything I said.
+                I just wanted to be honest about
+                liking you without making things
+                complicated or putting any pressure
+                on you.
+            </p>
+
 
             <p class="hand">
-                Whatever happens from here, I'm glad I got to
-                tell you. ♡
+                Whatever happens from here,
+                I'm glad I got to tell you. ♡
             </p>
+
 
             <p class="ending-note">
-                Now you can go back to pretending this never happened.
-            </p>
-
-        </section>
-
-
-        <div class="footer">
-            made with questionable courage ♡
-        </div>
-
-    </div>
-
-</div>
-
-
-<script>
-
-/* =========================================
-   FORMSPREE
-========================================= */
-
-const FORMSPREE_URL =
-"https://formspree.io/f/xvkzpdry";
-
-
-/* =========================================
-   SCREEN NAVIGATION
-========================================= */
-
-function nextScreen(number){
-
-    document.querySelectorAll(".screen").forEach(screen => {
-
-        screen.classList.remove("active");
-
-    });
-
-
-    const next =
-    document.getElementById("screen" + number);
-
-
-    if(next){
-
-        next.classList.add("active");
-
-    }
-
-
-    window.scrollTo({
-
-        top:0,
-
-        behavior:"smooth"
-
-    });
-
-
-    if(number === 3){
-
-        startTyping();
-
-    }
-
-}
-
-
-/* =========================================
-   TYPING EFFECT
-========================================= */
-
-let typingStarted = false;
-
-
-function startTyping(){
-
-    if(typingStarted) return;
-
-    typingStarted = true;
-
-
-    const text =
-    "This is probably the part where I pretend I wasn't nervous writing this. I was. A little.";
-
-
-    const element =
-    document.getElementById("typingText");
-
-
-    let index = 0;
-
-
-    function type(){
-
-        if(index < text.length){
-
-            element.textContent +=
-            text.charAt(index);
-
-            index++;
-
-            setTimeout(type,35);
-
-        }
-
-    }
-
-
-    type();
-
-}
-
-
-/* =========================================
-   SEND FINAL RESPONSE
-========================================= */
-
-async function sendChoice(choice){
-
-    /*
-       The response is sent silently.
-       Nothing about the submission is shown
-       to the person answering.
-    */
-
-    try{
-
-        await fetch(
-
-            FORMSPREE_URL,
-
-            {
-
-                method:"POST",
-
-                headers:{
-
-                    "Content-Type":
-                    "application/json",
-
-                    "Accept":
-                    "application/json"
-
-                },
-
-                body:JSON.stringify({
-
-                    response:choice,
-
-                    type:"confession_response"
-
-                })
-
-            }
-
-        );
-
-    }
-
-    catch(error){
-
-        /*
-           Even if Formspree fails,
-           the page continues normally.
-        */
-
-    }
-
-
-    /* Every answer leads to the same ending. */
-
-    nextScreen(9);
-
-}
-
-</script>
-
-</body>
-                </html>              </button>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             QUESTION 1
-        ========================== -->
-
-        <section class="screen" id="screen5">
-
-            <div class="question-number">
-                question 01 / 04
-            </div>
-
-            <div class="question">
-                Important question:
-                if we lived together, who gets the better side of the bed?
-            </div>
-
-            <div class="options">
-
-                <button class="option" onclick="nextScreen(6)">
-                    obviously me. I have standards.
-                </button>
-
-                <button class="option" onclick="nextScreen(6)">
-                    you. I'm generous like that.
-                </button>
-
-                <button class="option" onclick="nextScreen(6)">
-                    we fight for it every night.
-                </button>
-
-                <button class="option" onclick="nextScreen(6)">
-                    we sleep on the floor. problem solved.
-                </button>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             QUESTION 2
-        ========================== -->
-
-        <section class="screen" id="screen6">
-
-            <div class="question-number">
-                question 02 / 04
-            </div>
-
-            <div class="question">
-                We have one last french fry.
-                What happens?
-            </div>
-
-            <div class="options">
-
-                <button class="option" onclick="nextScreen(7)">
-                    I give it to you ♡
-                </button>
-
-                <button class="option" onclick="nextScreen(7)">
-                    I eat it before you notice.
-                </button>
-
-                <button class="option" onclick="nextScreen(7)">
-                    we split it like civilized people.
-                </button>
-
-                <button class="option" onclick="nextScreen(7)">
-                    whoever grabs it first wins.
-                </button>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             QUESTION 3
-        ========================== -->
-
-        <section class="screen" id="screen7">
-
-            <div class="question-number">
-                question 03 / 04
-            </div>
-
-            <div class="question">
-                You get a tiny magical sidekick.
-                Who are you choosing?
-            </div>
-
-            <div class="options">
-
-                <button class="option" onclick="nextScreen(8)">
-                    🐱 tiny cat
-                </button>
-
-                <button class="option" onclick="nextScreen(8)">
-                    🐉 pocket dragon
-                </button>
-
-                <button class="option" onclick="nextScreen(8)">
-                    🐧 emotionally supportive penguin
-                </button>
-
-                <button class="option" onclick="nextScreen(8)">
-                    🦫 ridiculously powerful capybara
-                </button>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             FINAL QUESTION
-        ========================== -->
-
-        <section class="screen" id="screen8">
-
-            <div class="question-number">
-                okay... the actual question
-            </div>
-
-            <div class="question">
-                what do you actually feel about me?
-            </div>
-
-            <div class="options">
-
-                <button
-                    class="option"
-                    onclick="sendChoice('I like you too ❤️')">
-
-                    I like you too ❤️
-
-                </button>
-
-
-                <button
-                    class="option"
-                    onclick="sendChoice('I like you, but I need some time ❤️')">
-
-                    I like you, but I need some time ❤️
-
-                </button>
-
-
-                <button
-                    class="option"
-                    onclick="sendChoice('I am not sure yet')">
-
-                    I am not sure yet
-
-                </button>
-
-
-                <button
-                    class="option"
-                    onclick="sendChoice('I do not feel the same way')">
-
-                    I do not feel the same way
-
-                </button>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             ENDING PAGE
-        ========================== -->
-
-        <section class="screen" id="screen9">
-
-            <div class="ending-heart">
-                ♡
-            </div>
-
-            <div class="small">
-                that's all :)
-            </div>
-
-            <h2>
-                thank you for answering.
-            </h2>
-
-            <p>
-                Whatever your answer was, I'm genuinely glad
-                you took the time to go through all of this.
-            </p>
-
-            <p>
-                I wasn't expecting you to have some perfect answer.
-                I just wanted to be honest about how I feel.
-            </p>
-
-            <p class="hand">
-                No pressure. No awkwardness.
-                Just... me being a little brave for once. ♡
-            </p>
-
-            <p class="ending-note">
-                Now you can go back to pretending this never happened.
-            </p>
-
-        </section>
-
-
-        <div class="footer">
-            made with questionable courage ♡
-        </div>
-
-
-    </div>
-
-</div>
-
-
-<script>
-
-
-/* =========================================
-   FORMSPREE ENDPOINT
-========================================= */
-
-const FORMSPREE_URL =
-"https://formspree.io/f/xvkzpdry";
-
-
-
-/* =========================================
-   SCREEN NAVIGATION
-========================================= */
-
-function nextScreen(number){
-
-    document.querySelectorAll(".screen").forEach(screen => {
-
-        screen.classList.remove("active");
-
-    });
-
-
-    const next =
-    document.getElementById("screen" + number);
-
-
-    if(next){
-
-        next.classList.add("active");
-
-    }
-
-
-    window.scrollTo({
-
-        top:0,
-
-        behavior:"smooth"
-
-    });
-
-
-    if(number === 3){
-
-        startTyping();
-
-    }
-
-}
-
-
-
-/* =========================================
-   TYPING EFFECT
-========================================= */
-
-let typingStarted = false;
-
-
-function startTyping(){
-
-    if(typingStarted) return;
-
-
-    typingStarted = true;
-
-
-    const text =
-    "This is the part where I pretend I wasn't nervous writing this. I was. A little.";
-
-
-    const element =
-    document.getElementById("typingText");
-
-
-    let index = 0;
-
-
-    function type(){
-
-        if(index < text.length){
-
-            element.textContent +=
-            text.charAt(index);
-
-            index++;
-
-            setTimeout(type,35);
-
-        }
-
-    }
-
-
-    type();
-
-}
-
-
-
-/* =========================================
-   SEND FINAL RESPONSE
-========================================= */
-
-async function sendChoice(choice){
-
-    /*
-       Send the answer quietly.
-
-       The person viewing the page will NOT see:
-       - sending...
-       - answer sent
-       - error messages
-
-       Regardless of what happens with Formspree,
-       the page moves to the ending.
-    */
-
-    try{
-
-        await fetch(
-
-            FORMSPREE_URL,
-
-            {
-
-                method:"POST",
-
-                headers:{
-
-                    "Content-Type":
-                    "application/json",
-
-                    "Accept":
-                    "application/json"
-
-                },
-
-                body:JSON.stringify({
-
-                    response:choice,
-
-                    type:"confession_response"
-
-                })
-
-            }
-
-        );
-
-    }
-
-    catch(error){
-
-        /*
-           Even if Formspree fails,
-           don't interrupt the experience.
-        */
-
-    }
-
-
-    /* ALWAYS SHOW ENDING PAGE */
-
-    nextScreen(9);
-
-}
-
-</script>
-
-</body>
-</html>
+                And hey... I'm sti
